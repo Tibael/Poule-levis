@@ -1,0 +1,27 @@
+language: python
+python:
+    - "3.9"
+    
+# Cache PlatformIO packages using Travis CI container-based infrastructure
+sudo: false
+cache:
+    directories:
+        - "~/.platformio"
+        - $HOME/.cache/pip
+
+install:
+    - pip install -U platformio
+    - pio update
+
+script:
+    - pio run
+
+deploy:
+  provider: releases
+  api_key: "f9lbdy5d5vHGjvY1kce/GGYcsyvDQ4kjwfcpWp8sog1obKoGZP7Jp1sxDFS2gOxWwk1vxrbOuwqB0I5XwxLW/6XoTfBCm+r0w9KFl4cmMykRKng6nFQhaSVklY94q+udIoBhkwnA++98avt6YV6YuY7TN9JJ0uXGgCNU0h7mLXY4+nBVSyUo/I31lb3CIVLt7Jhuqww1EKMaGfLgA5DFEEF5GJVTbIloBuAd0TQOCStzPirfn+XqyDa7ym8uR5ZP4yV1E39Phg93Idg97BxFfM4miYv62OekXUk79YX3sUPl56PDUaFB7xdxnku+Afkhk+hoRled0nio2s3DfSlWQiKYTK/vyT9vIMl4rCLvKZGD2A6ikCLKfEWHhSzlFpH9L+Wm9Daump0y+0RAAey3Az8Wv+sLpIyjyA6RsIOuZfdssesZCTRmeQk2LFT/TfQwVC6bprq6dBIbd7U+3f5VnXdTwwkTFDwz53tLuGTfT2y1hbDPPb8sL5UMEANFzUbEPoa0pNsMIRLgYOkZ5gX6Z71Q3iuVxXNM8LL4DwMQkXohRDJyBXMFGbCPGS2Re2yqv8MZWsZ8v8XoySWYtT9VbH+DvlWCdCzBGC5ACyDEhXNniPnF5lC67Fp2HUrctNDQyYQLAwo9DvCBr3trPDG+55M15UMuXSFXdy/oBQntMhc="
+  file: 
+    - .pio/build/d1_mini_lite/firmware.bin
+  skip_cleanup: true
+  on:
+    repo: Tibael/Poule-levis
+    tags: true
