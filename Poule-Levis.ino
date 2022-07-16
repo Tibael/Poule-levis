@@ -15,7 +15,7 @@
 
 #define Debug WebSerial
 
-#define GHOTA_CURRENT_TAG "2.1.0"
+#define GHOTA_CURRENT_TAG "2.1.1"
 
 //----------------------------------------------------
 //        VARIABLE D'AJUSTEMENT
