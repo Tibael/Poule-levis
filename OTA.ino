@@ -1,16 +1,8 @@
-// Include version as string, falling back to an empty string if undefined
-#define STRINGIFY(s) STRINGIFY1(s)
-#define STRINGIFY1(s) #s
-#ifdef VERSION
-const char* version = STRINGIFY(VERSION);
-#else
-const char* version = "";
-#endif
 
 /* Set up values for your repository and binary names */
 #define GHOTA_USER "Tibael"
 #define GHOTA_REPO "Poule-levis"
-#define GHOTA_BIN_FILE "firmware.bin"
+#define GHOTA_BIN_FILE "Poule-Levis.ino.d1_mini.bin"
 #define GHOTA_ACCEPT_PRERELEASE 0
 
 BearSSL::CertStore certStore;
@@ -93,7 +85,7 @@ void setupOTA()
     return;  // Can't connect to anything w/o certs!
   }
 
-  if (strlen(version) == 0) {
+  if (strlen(GHOTA_CURRENT_TAG) == 0) {
     Serial.println("Skipping update check because no version is set");
     do_update_check = false;
     return;
